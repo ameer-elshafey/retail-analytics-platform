@@ -1,0 +1,11 @@
+Code,Description,Brand,Class,Vendor ID,Qty,Unit Cost,Total Value,WIO Benchmark
+SAM-101,Samsung 55" 4K Smart TV,Samsung,TV,V001,75,450.00,33750.00,45
+LG-202,LG 65" OLED TV,LG,TV,V002,30,950.00,28500.00,30
+SON-303,Sony Soundbar 300W,Sony,Audio,V003,180,180.00,32400.00,25
+APP-404,Apple iPhone 15,Apple,Mobile,V001,200,850.00,170000.00,15
+DEL-505,Dell XPS 15,Dell,Laptop,V004,45,1100.00,49500.00,35
+JBL-606,JBL Bluetooth Speaker,JBL,Audio,V005,500,45.00,22500.00,20
+HP-707,HP Spectre Laptop,HP,Laptop,V004,20,950.00,19000.00,40
+LEN-808,Lenovo ThinkPad X1,Lenovo,Laptop,V003,55,1050.00,57750.00,30
+SAM-909,Samsung Galaxy Tab S9,Samsung,Tablet,V001,90,480.00,43200.00,25
+BOE-110,Bose Wireless Earbuds,Bose,Audio,V002,5,150.00,750.00,30
