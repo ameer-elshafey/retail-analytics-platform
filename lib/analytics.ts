@@ -224,6 +224,7 @@ export function generateAIInsights(
 export function generateAlerts(inventory: InventoryRecord[]): AlertItem[] {
   const alerts: AlertItem[] = [];
   let id = 1;
+  const stableTimestamp = '2024-06-01T00:00:00.000Z';
 
   for (const item of inventory) {
     if (item.inventoryStatus === 'critical') {
@@ -233,7 +234,7 @@ export function generateAlerts(inventory: InventoryRecord[]): AlertItem[] {
         severity: 'critical',
         title: `Critical Stock: ${item.code}`,
         message: `${item.description || item.code} - WIO ${item.wioActual.toFixed(1)} vs benchmark ${item.wioBenchmark.toFixed(1)}`,
-        timestamp: new Date().toISOString(),
+        timestamp: stableTimestamp,
         dismissed: false,
       });
     }
@@ -247,7 +248,7 @@ export function generateAlerts(inventory: InventoryRecord[]): AlertItem[] {
         severity: 'warning',
         title: `Overstock: ${item.code}`,
         message: `${item.description || item.code} - WIO ${item.wioActual.toFixed(1)} vs benchmark ${item.wioBenchmark.toFixed(1)}`,
-        timestamp: new Date().toISOString(),
+        timestamp: stableTimestamp,
         dismissed: false,
       });
     }

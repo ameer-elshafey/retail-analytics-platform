@@ -19,7 +19,7 @@ import {
   computeProductVelocity, computeABCClass, computeWIOActual,
 } from '@/lib/analytics';
 
-import { generateSalesData, generatePurchaseData, generateInventoryData } from '@/lib/sample-data';
+import { getStaticSalesData, getStaticPurchaseData, getStaticInventoryData } from '@/lib/sample-data';
 import { autoMapHeaders, rowToRecord, normalizeHeaders, parseNumber } from '@/lib/normalization';
 import { getFieldsForCategory } from '@/lib/schema';
 import { validateData } from '@/lib/validation';
@@ -104,9 +104,9 @@ export default function HomePage() {
   const [showFilters, setShowFilters] = useState(false);
   const [alertsDismissed, setAlertsDismissed] = useState<Set<string>>(new Set());
 
-  const [salesData, setSalesData] = useState<SalesRecord[]>(() => generateSalesData(200));
-  const [purchaseData, setPurchaseData] = useState<PurchaseRecord[]>(() => generatePurchaseData(150));
-  const [inventoryData, setInventoryData] = useState<InventoryRecord[]>(() => generateInventoryData(300));
+  const [salesData, setSalesData] = useState<SalesRecord[]>(getStaticSalesData);
+  const [purchaseData, setPurchaseData] = useState<PurchaseRecord[]>(getStaticPurchaseData);
+  const [inventoryData, setInventoryData] = useState<InventoryRecord[]>(getStaticInventoryData);
 
   const [uploadStates, setUploadStates] = useState<Record<string, UploadState>>({
     sales: { category: 'sales', file: null, fileName: '', sheets: [], selectedSheet: '', preview: [], headers: [], mapping: [], validation: null, processing: false, complete: false, error: null },
@@ -197,7 +197,7 @@ export default function HomePage() {
         const qty = parseNumber(record.qty);
         const unitCost = parseNumber(record.unitCost);
         const wioBenchmark = parseNumber(record.wioBenchmark);
-        const salesVelocity = Math.random() * 15 + 0.5;
+        const salesVelocity = ((idx * 7 + 3) % 15) + 0.5;
         const wioActual = computeWIOActual(qty, salesVelocity);
         record.totalValue = qty * unitCost;
         record.wioActual = Math.round(wioActual * 10) / 10;
